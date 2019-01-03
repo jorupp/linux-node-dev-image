@@ -4,7 +4,9 @@ RUN apt-get update && apt-get install -y \
 	curl \
 	git \
 	gnupg \
+	libreadline7 \
 	net-tools \
+	screen \
 	ssh \
 	vim \
 	&& sh -c 'curl -sL https://deb.nodesource.com/setup_11.x | bash -' \
