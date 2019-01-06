@@ -39,6 +39,11 @@ RUN sed -i "s#location @proxy#location /share { autoindex on; charset utf-8; dav
 	&& mkdir /root/share \
 	&& chmod 777 /root/share
 
+# set up SSHD (though you still have to set up a password for it to work)
+RUN sh -c 'echo "[program:sshd]\ncommand=/usr/sbin/sshd -D" >> /etc/supervisor/conf.d/supervisord.conf' \
+	&& sh -c 'echo "PermitRootLogin yes" >> /etc/ssh/sshd_config' \
+	&& mkdir -p /var/run/sshd
+
 # browser+WebDAV is on port 80, VNC on port 5900
 
 # mapping /root/.ssh to a volume with your SSH key in id_rsa will allow it to be used automatically
