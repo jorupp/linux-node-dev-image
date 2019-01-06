@@ -4,6 +4,8 @@ Windows desktop, but on projects where several of the scripts set up for the
 project rely on Linux.  I'd like to run my IDE + Browser on the Windows
 machine and the node stuff in a Docker container.
 
+**Warning: there are some known issues with dot-files (ie. .git or .gitignore) - I think it's the nginx webdav extension causing it.  This can make some projects/IDEs act odd.**
+
 This image is based on `dorowu/ubuntu-desktop-lxde-vnc`, and adds:
  * `git`
  * `screen`
