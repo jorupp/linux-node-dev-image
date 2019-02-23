@@ -1,4 +1,4 @@
-FROM dorowu/ubuntu-desktop-lxde-vnc
+FROM dorowu/ubuntu-desktop-lxde-vnc:bionic
 
 # Install the tools we need
 RUN apt-get update \
@@ -21,6 +21,8 @@ RUN apt-get update \
 RUN sh -c 'echo "Package: *\nPin: release o=Debian\nPin-Priority: 10\n\nPackage: nginx*\nPin: release o=Debian\nPin-Priority: 600" >> /etc/apt/preferences.d/pin-debian' \
 	&& sh -c 'echo "deb http://deb.debian.org/debian sid main" >> /etc/apt/sources.list' \
 	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B48AD6246925553 \
+	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7638D0442B90D010 \
+	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC \
 	&& apt-get update \
 	&& apt-get install -t sid -y \
 	libnginx-mod-http-dav-ext \
